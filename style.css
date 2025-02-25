@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.mobile-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.content::before {
+    content: '💕';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.content::after {
+    content: '💝';
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite 1.5s;
+}
+
+.love-counter {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 15px 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 300px;
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.love-counter::before,
+.love-counter::after {
+    content: '❤️';
+    position: absolute;
+    font-size: 1.2rem;
+    opacity: 0.3;
+}
+
+.love-counter::before {
+    top: 5px;
+    left: 5px;
+}
+
+.love-counter::after {
+    bottom: 5px;
+    right: 5px;
+}
+
+.love-counter:hover {
+    transform: translateY(-3px);
+}
+
+.counter-label {
+    color: #ff4d6d;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.counter-value {
+    color: #ff4d6d;
+    font-size: 1.1rem;
+    display: block;
+}
+
+.memories-title {
+    width: 100%;
+    text-align: center;
+    color: white;
+    margin: 1rem 0;
+    position: relative;
+    padding: 0 30px;
+}
+
+.memories-title::before,
+.memories-title::after {
+    content: '✨';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+}
+
+.memories-title::before {
+    left: 0;
+}
+
+.memories-title::after {
+    right: 0;
+}
+
+.memories-title h3 {
+    font-size: 1.4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px 20px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.photo-item {
+    width: 100%;
+    position: relative;
+    perspective: 1000px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 8px;
+    aspect-ratio: 1;
+}
+
+.photo-frame {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.photo-item img.rotate-right {
+    transform: scaleX(-1);
+}
+
+.photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 75, 109, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+    backdrop-filter: blur(3px);
+}
+
+.photo-item:hover .photo-overlay {
+    opacity: 1;
+}
+
+.heart-icon {
+    font-size: 2rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: #ff4d6d;
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    background: #ffe5e5;
+}
+
+.love-message {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    color: white;
+    font-size: 1.2rem;
+    min-height: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    margin-top: 1rem;
+}
+
+.typing-text {
+    display: inline-block;
+    border-right: 2px solid white;
+    padding-right: 5px;
+    white-space: nowrap;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@media (min-width: 768px) {
+    .photo-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-container {
+        padding: 15px;
+    }
+
+    .content {
+        padding: 0.5rem;
+        gap: 1.5rem;
+    }
+
+    .love-counter {
+        padding: 12px 20px;
+    }
+
+    .counter-label {
+        font-size: 0.9rem;
+    }
+
+    .counter-value {
+        font-size: 1rem;
+    }
+
+    .memories-title h3 {
+        font-size: 1.2rem;
+        padding: 8px 15px;
+    }
+
+    .photo-gallery {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 1rem;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .photo-item {
+        padding: 6px;
+    }
+
+    .love-message {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+
+    .music-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .content::before,
+    .content::after {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-height: 700px) {
+    .mobile-container {
+        padding: 10px 0;
+    }
+
+    .content {
+        gap: 1rem;
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white }
+}
